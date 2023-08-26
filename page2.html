@@ -10,10 +10,14 @@
 <body>
     <h1> Let's Create the pie chart ! </h1>
     <h3> Enter Percentages </h3>
-    <div id = "percentage-container"></div> 
+    <div id = "percentage-container"> 
+        <div class="percentage-input">
+            <input type="number" placeholder="Enter 1st percentage:">
+        </div>
+    </div> 
     <!-- hold the input -->
-    <button onclick="addingPercent()"> Add Percentages</button>
-    <button onclick="navigateToIndex()">Go Back</button>
+    <button2 onclick="addingPercent()">Add Percentages</button2>
+    <button onclick="window.location.href='index.html'">Go Back</button>
     <!-- Include the Electron preload script -->
     <script src="./node_modules/electron/preload.js"></script>
     <!-- Include your render.js script after the preload script -->
