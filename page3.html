@@ -20,9 +20,11 @@
 
     <body onload="head1()">
         <form>
-        <h1 id="money"></h1>
         </form>
-        <canvas id="myChart"></canvas>
+        <div class="chart-container">
+            <h1 id="money"></h1>
+            <canvas id="myChart"></canvas>
+        </div>
         <script>
             var bucks = localStorage.getItem('bucks');
             var list = bucks.split(',');
@@ -39,10 +41,8 @@
                 options: {
                     title: {
                         display: true,
-                        responsive: true,
-                        maintainAspectRatio: false,
                         text: 'Pie Chart'
-                    }
+                    },
                 }
             });
         </script>
