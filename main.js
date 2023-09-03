@@ -20,5 +20,3 @@ app.whenReady().then(createWindow);
 ipcMain.on('navigate-to-page2', () => {
     win.loadFile('page2.html') // Load the second page
 });
-
-

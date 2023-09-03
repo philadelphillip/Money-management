@@ -1,28 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create the pie chart !</title>
-    <link rel="stylesheet" href="style.css">
-    <script defer src="render.js"></script>
-</head>
-<body>
-    <h1> Let's Create the pie chart ! </h1>
-    <h3> Enter Percentages </h3>
-    <div id = "percentage-container"> 
-        <div class="percentage-input">
-            <input type="number" placeholder="Enter 1st percentage:">
-        </div>
-    </div> 
-    <!-- hold the input -->
-    <button2 onclick="addingPercent()">Add Percentages</button2>
-    <button onclick="window.location.href='index.html'">Go Back</button>
-    <!-- Include the Electron preload script -->
-    <script src="./node_modules/electron/preload.js"></script>
-    <!-- Include your render.js script after the preload script -->
-    <script defer src="render.js"></script>
-    <script defer src="page2.js"></script>
-</body>
-</html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Create the pie chart!</title>
+        <link rel="stylesheet" href="style.css">
+        <script defer src="render.js"></script>
+        <script>
+            function showMoney() {
+            const money = localStorage.getItem('money');
+            document.getElementById("money").innerHTML = "Your money is "+money;
+            }
+        </script>
+    </head>
 
+    <body onload="showMoney()">
+        <h1> Let's Create the pie chart!</h1>
+        <form>
+            <h2 id="money"></h2>
+        </form>
+        <h3> Enter Percentages </h3>
+
+        <div id = "percentage-container" style="text-align: center; display: flex; flex-direction: column;"> 
+            <div id = "percentage-inputi" class="percentage-input" style="display: flex; flex-direction: column;">
+                <input type="number" id="input" placeholder="Enter 1 percentage:" style="margin-bottom:10px;" required>
+            </div>
+        </div> 
+
+        <!-- hold the input -->
+        <button2 onclick="addingPercent()">add percentages</button2>
+        <button onclick="graphPage()">Next</button>
+        <button onclick="window.location.href='index.html'">Go Back</button>
+
+        <!-- Include the Electron preload script -->
+        <script src="./node_modules/electron/preload.js"></script>
+
+        <!-- Include your render.js script after the preload script -->
+        <script defer src="render.js"></script>
+        <script defer src="page2.js"></script>
+
+        <!-- Get input's values -->
+        <script>
+            function graphPage(){
+                // var inputContainer = document.getElementById('percentage-container');
+                // var inputDiv = document.getElementsById('percentage-input');
+                var inputElements = document.querySelectorAll('input')
+                var values = [];
+                const money = localStorage.getItem('money');
+                // Iterate through input elements and collect their values
+                for (let input of inputElements) {
+                    values.push(parseFloat(input.value)/100*money);
+                }
+                localStorage.setItem('bucks', values)
+                window.location.href = "page3.html"
+            }
+        </script>
+    </body>
+</html>

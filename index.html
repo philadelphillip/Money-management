@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Money Management </title>
-    <link rel="stylesheet" href="style.css">
-    <script defer src="render.js"></script>
-</head>
-<body>
-    <h1> Money Management </h1>
-    <input type="number" id="total-money" class="amount" placeholder="Enter total money ">
-    <button id="submit-button" onclick="window.location.href='page2.html'">Submit</button>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Money Management</title>
+        <link rel="stylesheet" href="style.css">
+        <script defer src="render.js"></script>
+    </head>
+    <body>
+        <h1> Money Management </h1>
 
-    <script src="node_modules/electron/dist/electron.js"></script>
-    <script>
-        require('electron').remote.app.getAppPath();
-    </script>
-    <script src="render.js"></script>
+        <!-- <form method="get" action="page2.html"> -->
+        <div style="text-align: center;">
+            <input type="number" id="total_money" class="amount" placeholder="Enter total money " required>
+            <br><button onClick="nextPage()">Submit</button>
+        </div>
 
-</body>
+        <!-- </form> -->
+        <script src="'node_modules/electron/dist/electron.js'; src='render.js'">
+            require('electron').remote.app.getAppPath();
+        </script>
+
+        <script>
+            function nextPage() {
+            const money = document.getElementById("total_money").value;
+            localStorage.setItem("money", money);
+            window.location.href = "page2.html";
+            }
+        </script>
+
+        <script src="render.js"></script>
+
+    </body>
 </html>
